@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pregnancy & Ovulation Calculator</title>
+<title>ZarooriTools - Free Online Calculators</title>
+
+<meta name="description" content="ZarooriTools offers free online Age, Percentage, Salary, Gold, Unit Conversion, Date Difference, Basic, Pregnancy and Ovulation calculators.">
 
 <style>
 *{
@@ -14,174 +16,208 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#fff1f7,#eef7ff);
-    color:#333;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f6f8fc;
+    color:#222;
     line-height:1.6;
 }
 
 header{
-    background:linear-gradient(135deg,#d63384,#7b61ff);
+    background:linear-gradient(135deg,#6c5ce7,#00b894);
     color:white;
+    padding:30px 15px;
     text-align:center;
-    padding:35px 15px;
 }
 
 header h1{
-    font-size:32px;
-    margin-bottom:8px;
+    font-size:38px;
+    margin-bottom:5px;
 }
 
 header p{
     font-size:16px;
-    opacity:.95;
 }
 
 .container{
-    max-width:1000px;
-    margin:30px auto;
-    padding:0 15px;
+    max-width:1100px;
+    margin:auto;
+    padding:25px 15px;
 }
 
-.tabs{
+.home-title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.home-title h2{
+    color:#333;
+    margin-bottom:5px;
+}
+
+.home-title p{
+    color:#777;
+}
+
+.tools-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin-bottom:25px;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
-.tab{
-    border:none;
-    padding:14px 8px;
-    border-radius:12px;
+.tool-card{
     background:white;
-    color:#7b61ff;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
-}
-
-.tab.active{
-    background:#7b61ff;
-    color:white;
-}
-
-.card{
-    background:white;
+    padding:25px 18px;
     border-radius:18px;
-    padding:25px;
-    margin-bottom:25px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    transition:.25s;
+    border:1px solid #eee;
 }
 
-.card h2{
-    color:#d63384;
-    margin-bottom:15px;
+.tool-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,.13);
+}
+
+.tool-icon{
+    font-size:42px;
+    margin-bottom:8px;
+}
+
+.tool-card h3{
+    color:#444;
+    margin-bottom:5px;
+}
+
+.tool-card p{
+    color:#777;
+    font-size:14px;
+}
+
+.calculator{
+    display:none;
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.calculator.active{
+    display:block;
+}
+
+.back{
+    border:none;
+    background:#eee;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+.calculator h2{
+    color:#6c5ce7;
+    margin-bottom:20px;
 }
 
 .form-group{
-    margin-bottom:18px;
+    margin-bottom:16px;
 }
 
 label{
     display:block;
     font-weight:bold;
-    margin-bottom:7px;
+    margin-bottom:6px;
 }
 
 input,select{
     width:100%;
-    padding:13px;
+    padding:12px;
     border:1px solid #ddd;
-    border-radius:10px;
+    border-radius:9px;
     font-size:16px;
+    background:white;
 }
 
-button.calculate{
+.calculate{
     width:100%;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    background:linear-gradient(135deg,#d63384,#7b61ff);
+    padding:13px;
+    border:0;
+    border-radius:9px;
+    background:linear-gradient(135deg,#6c5ce7,#00b894);
     color:white;
-    font-size:17px;
+    font-size:16px;
     font-weight:bold;
     cursor:pointer;
 }
 
-button.calculate:hover{
-    opacity:.9;
-}
-
 .result{
     display:none;
-    margin-top:22px;
-    padding:20px;
-    border-radius:14px;
-    background:#f7f3ff;
-    border-left:5px solid #7b61ff;
-}
-
-.result h3{
-    color:#7b61ff;
-    margin-bottom:10px;
-}
-
-.result-item{
-    background:white;
-    padding:12px;
+    margin-top:20px;
+    padding:18px;
+    background:#f4f1ff;
+    border-left:5px solid #6c5ce7;
     border-radius:10px;
-    margin:8px 0;
+}
+
+.result.show{
+    display:block;
+}
+
+.result strong{
+    color:#5b4bc4;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
 .info{
-    margin-top:20px;
+    margin-top:18px;
     padding:15px;
-    background:#fff8fb;
-    border-radius:12px;
-}
-
-.week-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin-top:15px;
-}
-
-.week{
-    background:#faf7ff;
-    padding:12px;
+    background:#f8f9fa;
     border-radius:10px;
-    text-align:center;
+    font-size:14px;
 }
 
 .disclaimer{
     background:#fff3cd;
     padding:15px;
-    border-radius:12px;
+    border-radius:10px;
     margin-top:20px;
-    font-size:14px;
+    font-size:13px;
 }
 
 footer{
-    background:#333;
+    background:#222;
     color:white;
     text-align:center;
     padding:25px 15px;
-    margin-top:40px;
+    margin-top:30px;
 }
 
-@media(max-width:700px){
+@media(max-width:800px){
+    .tools-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
     header h1{
-        font-size:25px;
+        font-size:30px;
     }
 
-    .tabs{
-        grid-template-columns:repeat(2,1fr);
+    .tools-grid{
+        grid-template-columns:1fr;
     }
 
-    .week-grid{
-        grid-template-columns:repeat(2,1fr);
+    .row{
+        grid-template-columns:1fr;
     }
 }
 </style>
@@ -190,92 +226,313 @@ footer{
 <body>
 
 <header>
-    <h1>🤰 Pregnancy & Ovulation Calculator</h1>
-    <p>Simple tools to understand your pregnancy dates and fertile window</p>
+    <h1>🛠️ ZarooriTools</h1>
+    <p>Simple, Free & Useful Online Calculators</p>
 </header>
 
 <div class="container">
 
-<div class="tabs">
-    <button class="tab active" onclick="showTab('pregnancy',this)">🤰 Pregnancy</button>
-    <button class="tab" onclick="showTab('week',this)">📅 Pregnancy Week</button>
-    <button class="tab" onclick="showTab('ovulation',this)">🥚 Ovulation</button>
-    <button class="tab" onclick="showTab('fertile',this)">❤️ Fertile Window</button>
+<!-- HOME -->
+
+<div id="home">
+
+<div class="home-title">
+    <h2>All Useful Tools</h2>
+    <p>Select a calculator to get started</p>
 </div>
 
-<!-- Pregnancy Calculator -->
+<div class="tools-grid">
 
-<div id="pregnancy" class="tab-content">
+<div class="tool-card" onclick="openTool('age')">
+    <div class="tool-icon">🎂</div>
+    <h3>Age Calculator</h3>
+    <p>Calculate your exact age</p>
+</div>
 
-<div class="card">
+<div class="tool-card" onclick="openTool('percentage')">
+    <div class="tool-icon">📊</div>
+    <h3>Percentage Calculator</h3>
+    <p>Calculate percentages easily</p>
+</div>
+
+<div class="tool-card" onclick="openTool('salary')">
+    <div class="tool-icon">💰</div>
+    <h3>Salary Calculator</h3>
+    <p>Calculate monthly and yearly salary</p>
+</div>
+
+<div class="tool-card" onclick="openTool('gold')">
+    <div class="tool-icon">🪙</div>
+    <h3>Gold Calculator</h3>
+    <p>Estimate gold value</p>
+</div>
+
+<div class="tool-card" onclick="openTool('unit')">
+    <div class="tool-icon">📏</div>
+    <h3>Unit Converter</h3>
+    <p>Convert common units</p>
+</div>
+
+<div class="tool-card" onclick="openTool('date')">
+    <div class="tool-icon">📅</div>
+    <h3>Date Difference</h3>
+    <p>Find difference between dates</p>
+</div>
+
+<div class="tool-card" onclick="openTool('basic')">
+    <div class="tool-icon">🧮</div>
+    <h3>Basic Calculator</h3>
+    <p>Perform basic calculations</p>
+</div>
+
+<div class="tool-card" onclick="openTool('due')">
+    <div class="tool-icon">🤰</div>
+    <h3>Pregnancy Due Date</h3>
+    <p>Estimate your due date</p>
+</div>
+
+<div class="tool-card" onclick="openTool('week')">
+    <div class="tool-icon">👶</div>
+    <h3>Pregnancy Week</h3>
+    <p>Calculate pregnancy week</p>
+</div>
+
+<div class="tool-card" onclick="openTool('ovulation')">
+    <div class="tool-icon">🌸</div>
+    <h3>Ovulation Calculator</h3>
+    <p>Estimate ovulation and fertile days</p>
+</div>
+
+</div>
+</div>
+
+
+<!-- AGE -->
+
+<div id="age" class="calculator">
+<button class="back" onclick="goHome()">← Back to Tools</button>
+<h2>🎂 Age Calculator</h2>
+
+<div class="form-group">
+<label>Date of Birth</label>
+<input type="date" id="dob">
+</div>
+
+<button class="calculate" onclick="calculateAge()">Calculate Age</button>
+
+<div id="ageResult" class="result"></div>
+</div>
+
+
+<!-- PERCENTAGE -->
+
+<div id="percentage" class="calculator">
+<button class="back" onclick="goHome()">← Back to Tools</button>
+<h2>📊 Percentage Calculator</h2>
+
+<div class="form-group">
+<label>What is X% of Y?</label>
+<div class="row">
+<input type="number" id="percentX" placeholder="Percentage">
+<input type="number" id="percentY" placeholder="Number">
+</div>
+</div>
+
+<button class="calculate" onclick="calculatePercentage()">Calculate</button>
+
+<div id="percentageResult" class="result"></div>
+</div>
+
+
+<!-- SALARY -->
+
+<div id="salary" class="calculator">
+<button class="back" onclick="goHome()">← Back to Tools</button>
+<h2>💰 Salary Calculator</h2>
+
+<div class="form-group">
+<label>Monthly Basic Salary</label>
+<input type="number" id="basicSalary">
+</div>
+
+<div class="form-group">
+<label>Allowances</label>
+<input type="number" id="allowances" value="0">
+</div>
+
+<div class="form-group">
+<label>Deductions</label>
+<input type="number" id="deductions" value="0">
+</div>
+
+<button class="calculate" onclick="calculateSalary()">Calculate Salary</button>
+
+<div id="salaryResult" class="result"></div>
+</div>
+
+
+<!-- GOLD -->
+
+<div id="gold" class="calculator">
+<button class="back" onclick="goHome()">← Back to Tools</button>
+<h2>🪙 Gold Calculator</h2>
+
+<div class="form-group">
+<label>Gold Weight (grams)</label>
+<input type="number" id="goldWeight" step="0.01">
+</div>
+
+<div class="form-group">
+<label>Price per Gram</label>
+<input type="number" id="goldPrice" placeholder="Enter current price">
+</div>
+
+<div class="form-group">
+<label>Gold Purity</label>
+<select id="goldPurity">
+<option value="24">24K</option>
+<option value="22">22K</option>
+<option value="21">21K</option>
+<option value="18">18K</option>
+</select>
+</div>
+
+<button class="calculate" onclick="calculateGold()">Calculate Gold Value</button>
+
+<div id="goldResult" class="result"></div>
+
+<div class="info">
+Enter the current price per gram yourself because gold prices change daily.
+</div>
+</div>
+
+
+<!-- UNIT -->
+
+<div id="unit" class="calculator">
+<button class="back" onclick="goHome()">← Back to Tools</button>
+<h2>📏 Unit Converter</h2>
+
+<div class="form-group">
+<label>Conversion Type</label>
+<select id="unitType" onchange="updateUnits()">
+<option value="length">Length</option>
+<option value="weight">Weight</option>
+<option value="temperature">Temperature</option>
+</select>
+</div>
+
+<div class="row">
+
+<div class="form-group">
+<label>Value</label>
+<input type="number" id="unitValue">
+</div>
+
+<div class="form-group">
+<label>From</label>
+<select id="unitFrom"></select>
+</div>
+
+</div>
+
+<div class="form-group">
+<label>To</label>
+<select id="unitTo"></select>
+</div>
+
+<button class="calculate" onclick="convertUnit()">Convert</button>
+
+<div id="unitResult" class="result"></div>
+</div>
+
+
+<!-- DATE -->
+
+<div id="date" class="calculator">
+<button class="back" onclick="goHome()">← Back to Tools</button>
+<h2>📅 Date Difference Calculator</h2>
+
+<div class="row">
+
+<div class="form-group">
+<label>Start Date</label>
+<input type="date" id="startDate">
+</div>
+
+<div class="form-group">
+<label>End Date</label>
+<input type="date" id="endDate">
+</div>
+
+</div>
+
+<button class="calculate" onclick="calculateDateDifference()">Calculate Difference</button>
+
+<div id="dateResult" class="result"></div>
+</div>
+
+
+<!-- BASIC -->
+
+<div id="basic" class="calculator">
+<button class="back" onclick="goHome()">← Back to Tools</button>
+<h2>🧮 Basic Calculator</h2>
+
+<div class="form-group">
+<label>Enter Calculation</label>
+<input type="text" id="basicExpression" placeholder="Example: 25 + 10 * 2">
+</div>
+
+<button class="calculate" onclick="calculateBasic()">Calculate</button>
+
+<div id="basicResult" class="result"></div>
+</div>
+
+
+<!-- DUE DATE -->
+
+<div id="due" class="calculator">
+<button class="back" onclick="goHome()">← Back to Tools</button>
 <h2>🤰 Pregnancy Due Date Calculator</h2>
 
 <div class="form-group">
-<label>First Day of Your Last Menstrual Period (LMP)</label>
+<label>First Day of Last Menstrual Period</label>
 <input type="date" id="lmp">
 </div>
 
-<button class="calculate" onclick="calculatePregnancy()">
-Calculate Pregnancy
-</button>
+<button class="calculate" onclick="calculateDue()">Calculate Due Date</button>
 
-<div id="pregnancyResult" class="result"></div>
+<div id="dueResult" class="result"></div>
 
-<div class="info">
-<strong>How it works:</strong>
-Your estimated due date is calculated using the standard 40-week pregnancy period from the first day of your last menstrual period.
+<div class="disclaimer">
+Medical information provided by this calculator is for educational purposes only and should not replace professional medical advice.
 </div>
 </div>
 
-</div>
 
+<!-- PREGNANCY WEEK -->
 
-<!-- Pregnancy Week -->
-
-<div id="week" class="tab-content" style="display:none">
-
-<div class="card">
-<h2>📅 Pregnancy Week Calculator</h2>
+<div id="week" class="calculator">
+<button class="back" onclick="goHome()">← Back to Tools</button>
+<h2>👶 Pregnancy Week Calculator</h2>
 
 <div class="form-group">
-<label>First Day of Your Last Menstrual Period</label>
+<label>First Day of Last Menstrual Period</label>
 <input type="date" id="weekLmp">
 </div>
 
-<button class="calculate" onclick="calculateWeek()">
-Calculate Pregnancy Week
-</button>
+<button class="calculate" onclick="calculatePregnancyWeek()">Calculate Pregnancy Week</button>
 
 <div id="weekResult" class="result"></div>
 </div>
 
-<div class="card">
-<h2>🌸 Pregnancy Timeline</h2>
 
-<div class="week-grid">
-<div class="week"><strong>Weeks 1–4</strong><br>Early Pregnancy</div>
-<div class="week"><strong>Weeks 5–8</strong><br>Early Development</div>
-<div class="week"><strong>Weeks 9–12</strong><br>First Trimester</div>
-<div class="week"><strong>Weeks 13–16</strong><br>Second Trimester</div>
-<div class="week"><strong>Weeks 17–20</strong><br>Growing Baby</div>
-<div class="week"><strong>Weeks 21–24</strong><br>Baby Development</div>
-<div class="week"><strong>Weeks 25–28</strong><br>Third Trimester Begins</div>
-<div class="week"><strong>Weeks 29–32</strong><br>Rapid Growth</div>
-<div class="week"><strong>Weeks 33–36</strong><br>Preparing for Birth</div>
-<div class="week"><strong>Weeks 37–40</strong><br>Full Term</div>
-</div>
-</div>
+<!-- OVULATION -->
 
-</div>
-
-
-<!-- Ovulation -->
-
-<div id="ovulation" class="tab-content" style="display:none">
-
-<div class="card">
-
-<h2>🥚 Ovulation Calculator</h2>
+<div id="ovulation" class="calculator">
+<button class="back" onclick="goHome()">← Back to Tools</button>
+<h2>🌸 Ovulation Calculator</h2>
 
 <div class="form-group">
 <label>First Day of Last Period</label>
@@ -287,87 +544,394 @@ Calculate Pregnancy Week
 <input type="number" id="cycleLength" value="28" min="21" max="45">
 </div>
 
-<button class="calculate" onclick="calculateOvulation()">
-Calculate Ovulation
-</button>
+<button class="calculate" onclick="calculateOvulation()">Calculate</button>
 
 <div id="ovulationResult" class="result"></div>
 
-</div>
-
-</div>
-
-
-<!-- Fertile Window -->
-
-<div id="fertile" class="tab-content" style="display:none">
-
-<div class="card">
-
-<h2>❤️ Fertile Window Calculator</h2>
-
-<div class="form-group">
-<label>First Day of Last Period</label>
-<input type="date" id="fertileLmp">
-</div>
-
-<div class="form-group">
-<label>Average Cycle Length (days)</label>
-<input type="number" id="fertileCycle" value="28" min="21" max="45">
-</div>
-
-<button class="calculate" onclick="calculateFertile()">
-Calculate Fertile Window
-</button>
-
-<div id="fertileResult" class="result"></div>
-
-</div>
-
-</div>
-
-
-<div class="card">
-<h2>ℹ️ Important Information</h2>
-
-<p>
-Pregnancy and ovulation calculations are estimates. Actual ovulation,
-fertility and delivery dates can vary from person to person.
-</p>
-
 <div class="disclaimer">
-<strong>Medical Disclaimer:</strong><br>
-This calculator is for educational and informational purposes only.
-It should not replace advice, diagnosis or care from a qualified healthcare professional.
+Ovulation and fertile-window dates are estimates and can vary between cycles.
+</div>
 </div>
 
 </div>
 
-</div>
 
 <footer>
-<p>© 2026 Pregnancy & Ovulation Calculator</p>
-<p>For educational purposes only</p>
+<p><strong>🛠️ ZarooriTools</strong></p>
+<p>Free Online Calculators & Useful Tools</p>
+<p>© 2026 ZarooriTools</p>
 </footer>
 
 
 <script>
 
-function showTab(tabId, button){
+/* NAVIGATION */
 
-    document.querySelectorAll(".tab-content").forEach(function(tab){
-        tab.style.display="none";
+function openTool(id){
+
+    document.getElementById("home").style.display="none";
+
+    document.querySelectorAll(".calculator").forEach(function(el){
+        el.classList.remove("active");
     });
 
-    document.getElementById(tabId).style.display="block";
+    document.getElementById(id).classList.add("active");
 
-    document.querySelectorAll(".tab").forEach(function(btn){
-        btn.classList.remove("active");
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
     });
-
-    button.classList.add("active");
 }
 
+function goHome(){
+
+    document.querySelectorAll(".calculator").forEach(function(el){
+        el.classList.remove("active");
+    });
+
+    document.getElementById("home").style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* AGE */
+
+function calculateAge(){
+
+    let dobValue=document.getElementById("dob").value;
+
+    if(!dobValue){
+        alert("Please select your date of birth.");
+        return;
+    }
+
+    let dob=new Date(dobValue+"T00:00:00");
+    let today=new Date();
+
+    if(dob>today){
+        alert("Date of birth cannot be in the future.");
+        return;
+    }
+
+    let years=today.getFullYear()-dob.getFullYear();
+    let months=today.getMonth()-dob.getMonth();
+    let days=today.getDate()-dob.getDate();
+
+    if(days<0){
+        months--;
+        let previousMonth=new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            0
+        );
+        days+=previousMonth.getDate();
+    }
+
+    if(months<0){
+        years--;
+        months+=12;
+    }
+
+    let totalDays=Math.floor(
+        (today-dob)/(1000*60*60*24)
+    );
+
+    document.getElementById("ageResult").innerHTML=`
+        <strong>Exact Age:</strong><br>
+        ${years} years, ${months} months and ${days} days
+        <br><br>
+        <strong>Total Days:</strong> ${totalDays.toLocaleString()}
+    `;
+
+    document.getElementById("ageResult").classList.add("show");
+}
+
+
+/* PERCENTAGE */
+
+function calculatePercentage(){
+
+    let x=parseFloat(document.getElementById("percentX").value);
+    let y=parseFloat(document.getElementById("percentY").value);
+
+    if(isNaN(x)||isNaN(y)){
+        alert("Please enter both numbers.");
+        return;
+    }
+
+    let answer=(x/100)*y;
+
+    document.getElementById("percentageResult").innerHTML=`
+        <strong>${x}% of ${y} = ${answer}</strong>
+    `;
+
+    document.getElementById("percentageResult").classList.add("show");
+}
+
+
+/* SALARY */
+
+function calculateSalary(){
+
+    let basic=parseFloat(document.getElementById("basicSalary").value)||0;
+    let allowances=parseFloat(document.getElementById("allowances").value)||0;
+    let deductions=parseFloat(document.getElementById("deductions").value)||0;
+
+    let gross=basic+allowances;
+    let net=gross-deductions;
+    let annual=net*12;
+
+    document.getElementById("salaryResult").innerHTML=`
+        <strong>Gross Monthly Salary:</strong> ${gross.toLocaleString()}<br>
+        <strong>Net Monthly Salary:</strong> ${net.toLocaleString()}<br>
+        <strong>Estimated Annual Net Salary:</strong> ${annual.toLocaleString()}
+    `;
+
+    document.getElementById("salaryResult").classList.add("show");
+}
+
+
+/* GOLD */
+
+function calculateGold(){
+
+    let weight=parseFloat(document.getElementById("goldWeight").value);
+    let price=parseFloat(document.getElementById("goldPrice").value);
+    let purity=parseFloat(document.getElementById("goldPurity").value);
+
+    if(isNaN(weight)||isNaN(price)){
+        alert("Please enter weight and price.");
+        return;
+    }
+
+    let purityFactor=purity/24;
+    let value=weight*price*purityFactor;
+
+    document.getElementById("goldResult").innerHTML=`
+        <strong>Estimated Gold Value:</strong><br>
+        ${value.toLocaleString(undefined,{
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        })}
+        <br><br>
+        <strong>Purity:</strong> ${purity}K
+    `;
+
+    document.getElementById("goldResult").classList.add("show");
+}
+
+
+/* UNIT CONVERTER */
+
+const unitData={
+
+    length:{
+        meter:1,
+        kilometer:1000,
+        centimeter:0.01,
+        millimeter:0.001,
+        foot:0.3048,
+        inch:0.0254,
+        yard:0.9144,
+        mile:1609.344
+    },
+
+    weight:{
+        kilogram:1,
+        gram:0.001,
+        milligram:0.000001,
+        pound:0.45359237,
+        ounce:0.0283495231
+    },
+
+    temperature:{
+        celsius:1,
+        fahrenheit:1,
+        kelvin:1
+    }
+};
+
+function updateUnits(){
+
+    let type=document.getElementById("unitType").value;
+
+    let from=document.getElementById("unitFrom");
+    let to=document.getElementById("unitTo");
+
+    from.innerHTML="";
+    to.innerHTML="";
+
+    Object.keys(unitData[type]).forEach(function(unit){
+
+        from.innerHTML+=`<option value="${unit}">${unit}</option>`;
+        to.innerHTML+=`<option value="${unit}">${unit}</option>`;
+
+    });
+
+}
+
+function convertUnit(){
+
+    let type=document.getElementById("unitType").value;
+    let value=parseFloat(document.getElementById("unitValue").value);
+
+    let from=document.getElementById("unitFrom").value;
+    let to=document.getElementById("unitTo").value;
+
+    if(isNaN(value)){
+        alert("Please enter a value.");
+        return;
+    }
+
+    let answer;
+
+    if(type==="temperature"){
+
+        if(from==="celsius" && to==="fahrenheit"){
+            answer=(value*9/5)+32;
+        }
+        else if(from==="fahrenheit" && to==="celsius"){
+            answer=(value-32)*5/9;
+        }
+        else if(from==="celsius" && to==="kelvin"){
+            answer=value+273.15;
+        }
+        else if(from==="kelvin" && to==="celsius"){
+            answer=value-273.15;
+        }
+        else if(from==="fahrenheit" && to==="kelvin"){
+            answer=(value-32)*5/9+273.15;
+        }
+        else if(from==="kelvin" && to==="fahrenheit"){
+            answer=(value-273.15)*9/5+32;
+        }
+        else{
+            answer=value;
+        }
+
+    }else{
+
+        let base=value*unitData[type][from];
+
+        answer=base/unitData[type][to];
+
+    }
+
+    document.getElementById("unitResult").innerHTML=`
+        <strong>Result:</strong><br>
+        ${value} ${from} = ${answer.toLocaleString(undefined,{
+            maximumFractionDigits:8
+        })} ${to}
+    `;
+
+    document.getElementById("unitResult").classList.add("show");
+}
+
+
+/* DATE DIFFERENCE */
+
+function calculateDateDifference(){
+
+    let startValue=document.getElementById("startDate").value;
+    let endValue=document.getElementById("endDate").value;
+
+    if(!startValue||!endValue){
+        alert("Please select both dates.");
+        return;
+    }
+
+    let start=new Date(startValue+"T00:00:00");
+    let end=new Date(endValue+"T00:00:00");
+
+    if(end<start){
+        let temp=start;
+        start=end;
+        end=temp;
+    }
+
+    let days=Math.floor(
+        (end-start)/(1000*60*60*24)
+    );
+
+    let years=end.getFullYear()-start.getFullYear();
+    let months=end.getMonth()-start.getMonth();
+    let remainingDays=end.getDate()-start.getDate();
+
+    if(remainingDays<0){
+        months--;
+
+        let previousMonth=new Date(
+            end.getFullYear(),
+            end.getMonth(),
+            0
+        );
+
+        remainingDays+=previousMonth.getDate();
+    }
+
+    if(months<0){
+        years--;
+        months+=12;
+    }
+
+    document.getElementById("dateResult").innerHTML=`
+        <strong>Total Difference:</strong><br>
+        ${days.toLocaleString()} days
+        <br><br>
+        <strong>Approximate Calendar Difference:</strong><br>
+        ${years} years, ${months} months and ${remainingDays} days
+    `;
+
+    document.getElementById("dateResult").classList.add("show");
+}
+
+
+/* BASIC CALCULATOR */
+
+function calculateBasic(){
+
+    let expression=document.getElementById("basicExpression").value.trim();
+
+    if(!expression){
+        alert("Please enter a calculation.");
+        return;
+    }
+
+    if(!/^[0-9+\-*/().%\s]+$/.test(expression)){
+        alert("Only numbers and basic mathematical operators are allowed.");
+        return;
+    }
+
+    try{
+
+        let result=Function(
+            '"use strict"; return ('+expression+')'
+        )();
+
+        if(!isFinite(result)){
+            throw new Error();
+        }
+
+        document.getElementById("basicResult").innerHTML=`
+            <strong>Answer:</strong> ${result}
+        `;
+
+        document.getElementById("basicResult").classList.add("show");
+
+    }catch(e){
+
+        alert("Please enter a valid calculation.");
+
+    }
+
+}
+
+
+/* PREGNANCY DUE DATE */
 
 function formatDate(date){
 
@@ -380,7 +944,6 @@ function formatDate(date){
 
 }
 
-
 function addDays(date,days){
 
     let result=new Date(date);
@@ -389,10 +952,7 @@ function addDays(date,days){
 
 }
 
-
-/* Pregnancy Due Date */
-
-function calculatePregnancy(){
+function calculateDue(){
 
     let value=document.getElementById("lmp").value;
 
@@ -403,69 +963,22 @@ function calculatePregnancy(){
 
     let lmp=new Date(value+"T00:00:00");
 
-    let dueDate=addDays(lmp,280);
+    let due=addDays(lmp,280);
 
-    let today=new Date();
-
-    let difference=today-lmp;
-
-    let days=Math.floor(difference/(1000*60*60*24));
-
-    let weeks=Math.floor(days/7);
-
-    let remainingDays=days%7;
-
-    if(days<0){
-        weeks=0;
-        remainingDays=0;
-    }
-
-    if(weeks>40){
-        weeks=40;
-        remainingDays=0;
-    }
-
-    let trimester;
-
-    if(weeks<13){
-        trimester="First Trimester";
-    }
-    else if(weeks<27){
-        trimester="Second Trimester";
-    }
-    else{
-        trimester="Third Trimester";
-    }
-
-    document.getElementById("pregnancyResult").style.display="block";
-
-    document.getElementById("pregnancyResult").innerHTML=`
-
-        <h3>🌸 Your Pregnancy Estimate</h3>
-
-        <div class="result-item">
+    document.getElementById("dueResult").innerHTML=`
         <strong>Estimated Due Date:</strong><br>
-        ${formatDate(dueDate)}
-        </div>
-
-        <div class="result-item">
-        <strong>Pregnancy Age:</strong><br>
-        ${weeks} weeks ${remainingDays} days
-        </div>
-
-        <div class="result-item">
-        <strong>Trimester:</strong><br>
-        ${trimester}
-        </div>
-
+        ${formatDate(due)}
+        <br><br>
+        Pregnancy is conventionally estimated at about 40 weeks from the first day of the last menstrual period.
     `;
 
+    document.getElementById("dueResult").classList.add("show");
 }
 
 
-/* Pregnancy Week */
+/* PREGNANCY WEEK */
 
-function calculateWeek(){
+function calculatePregnancyWeek(){
 
     let value=document.getElementById("weekLmp").value;
 
@@ -475,77 +988,57 @@ function calculateWeek(){
     }
 
     let lmp=new Date(value+"T00:00:00");
-
     let today=new Date();
 
-    let days=Math.floor((today-lmp)/(1000*60*60*24));
-
-    let weeks=Math.floor(days/7);
-
-    let remaining=days%7;
+    let days=Math.floor(
+        (today-lmp)/(1000*60*60*24)
+    );
 
     if(days<0){
-        weeks=0;
-        remaining=0;
+        alert("The selected date is in the future.");
+        return;
     }
 
-    if(weeks>40){
-        weeks=40;
-        remaining=0;
-    }
+    let weeks=Math.floor(days/7);
+    let remaining=days%7;
 
     let trimester;
 
-    if(weeks<=12){
+    if(weeks<13){
         trimester="First Trimester";
-    }
-    else if(weeks<=26){
+    }else if(weeks<27){
         trimester="Second Trimester";
-    }
-    else{
+    }else{
         trimester="Third Trimester";
     }
 
-    document.getElementById("weekResult").style.display="block";
-
     document.getElementById("weekResult").innerHTML=`
-
-        <h3>📅 Pregnancy Progress</h3>
-
-        <div class="result-item">
-        <strong>Current Pregnancy Week:</strong><br>
-        Week ${weeks}
-        </div>
-
-        <div class="result-item">
-        <strong>Additional Days:</strong><br>
-        ${remaining} days
-        </div>
-
-        <div class="result-item">
-        <strong>Trimester:</strong><br>
-        ${trimester}
-        </div>
-
+        <strong>Pregnancy Age:</strong><br>
+        ${weeks} weeks and ${remaining} days
+        <br><br>
+        <strong>Trimester:</strong> ${trimester}
     `;
 
+    document.getElementById("weekResult").classList.add("show");
 }
 
 
-/* Ovulation */
+/* OVULATION */
 
 function calculateOvulation(){
 
     let value=document.getElementById("ovulationLmp").value;
 
-    let cycle=parseInt(document.getElementById("cycleLength").value);
+    let cycle=parseInt(
+        document.getElementById("cycleLength").value
+    );
 
     if(!value){
         alert("Please select the first day of your last period.");
         return;
     }
 
-    if(!cycle || cycle<21 || cycle>45){
+    if(!cycle||cycle<21||cycle>45){
         alert("Please enter a cycle length between 21 and 45 days.");
         return;
     }
@@ -554,84 +1047,36 @@ function calculateOvulation(){
 
     let ovulationDay=cycle-14;
 
-    let ovulation=addDays(lmp,ovulationDay-1);
+    let ovulation=addDays(
+        lmp,
+        ovulationDay-1
+    );
 
-    document.getElementById("ovulationResult").style.display="block";
+    let fertileStart=addDays(
+        ovulation,
+        -5
+    );
+
+    let fertileEnd=addDays(
+        ovulation,
+        1
+    );
 
     document.getElementById("ovulationResult").innerHTML=`
-
-        <h3>🥚 Estimated Ovulation</h3>
-
-        <div class="result-item">
         <strong>Estimated Ovulation Date:</strong><br>
         ${formatDate(ovulation)}
-        </div>
-
-        <div class="result-item">
-        <strong>Cycle Length:</strong><br>
-        ${cycle} days
-        </div>
-
-        <div class="result-item">
-        Ovulation is generally estimated around 14 days before the next period.
-        </div>
-
-    `;
-
-}
-
-
-/* Fertile Window */
-
-function calculateFertile(){
-
-    let value=document.getElementById("fertileLmp").value;
-
-    let cycle=parseInt(document.getElementById("fertileCycle").value);
-
-    if(!value){
-        alert("Please select the first day of your last period.");
-        return;
-    }
-
-    if(!cycle || cycle<21 || cycle>45){
-        alert("Please enter a cycle length between 21 and 45 days.");
-        return;
-    }
-
-    let lmp=new Date(value+"T00:00:00");
-
-    let ovulationDay=cycle-14;
-
-    let ovulation=addDays(lmp,ovulationDay-1);
-
-    let fertileStart=addDays(ovulation,-5);
-
-    let fertileEnd=addDays(ovulation,1);
-
-    document.getElementById("fertileResult").style.display="block";
-
-    document.getElementById("fertileResult").innerHTML=`
-
-        <h3>❤️ Estimated Fertile Window</h3>
-
-        <div class="result-item">
-        <strong>Fertile Window:</strong><br>
+        <br><br>
+        <strong>Estimated Fertile Window:</strong><br>
         ${formatDate(fertileStart)} to ${formatDate(fertileEnd)}
-        </div>
-
-        <div class="result-item">
-        <strong>Estimated Ovulation:</strong><br>
-        ${formatDate(ovulation)}
-        </div>
-
-        <div class="result-item">
-        The fertile window is an estimate and may vary between cycles.
-        </div>
-
     `;
 
+    document.getElementById("ovulationResult").classList.add("show");
 }
+
+
+/* START UNIT CONVERTER */
+
+updateUnits();
 
 </script>
 
