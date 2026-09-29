@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZarooriTools - Free Online Tools</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+header {
+    background: #1769aa;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 15px;
+}
+
+.tool {
+    background: white;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.tool h2 {
+    margin-top: 0;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    background: #1769aa;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0d4f82;
+}
+
+.result {
+    margin-top: 15px;
+    padding: 12px;
+    background: #eef6ff;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #666;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>ZarooriTools</h1>
+    <p>Simple Tools. Everyday Solutions.</p>
+</header>
+
+<div class="container">
+
+    <div class="tool">
+        <h2>🎂 Age Calculator</h2>
+
+        <label>Enter your date of birth:</label>
+
+        <input type="date" id="dob">
+
+        <button onclick="calculateAge()">Calculate Age</button>
+
+        <div class="result" id="ageResult">
+            Your age will appear here.
+        </div>
+    </div>
+
+    <div class="tool">
+        <h2>📊 Percentage Calculator</h2>
+
+        <input type="number" id="obtained" placeholder="Obtained marks">
+
+        <input type="number" id="total" placeholder="Total marks">
+
+        <button onclick="calculatePercentage()">Calculate Percentage</button>
+
+        <div class="result" id="percentageResult">
+            Your percentage will appear here.
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 ZarooriTools — Free Online Tools
+</footer>
+
+<script>
+
+function calculateAge() {
+
+    const dob = new Date(document.getElementById("dob").value);
+
+    if (!document.getElementById("dob").value) {
+        document.getElementById("ageResult").innerHTML =
+            "Please select your date of birth.";
+        return;
+    }
+
+    const today = new Date();
+
+    let years = today.getFullYear() - dob.getFullYear();
+    let months = today.getMonth() - dob.getMonth();
+    let days = today.getDate() - dob.getDate();
+
+    if (days < 0) {
+        months--;
+        days += new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            0
+        ).getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    document.getElementById("ageResult").innerHTML =
+        "Your age is " + years + " years, " +
+        months + " months and " +
+        days + " days.";
+}
+
+function calculatePercentage() {
+
+    const obtained = parseFloat(
+        document.getElementById("obtained").value
+    );
+
+    const total = parseFloat(
+        document.getElementById("total").value
+    );
+
+    if (!obtained || !total || total <= 0) {
+        document.getElementById("percentageResult").innerHTML =
+            "Please enter valid marks.";
+        return;
+    }
+
+    const percentage = (obtained / total) * 100;
+
+    document.getElementById("percentageResult").innerHTML =
+        "Percentage: " + percentage.toFixed(2) + "%";
+}
+
+</script>
+
+</body>
+</html>
