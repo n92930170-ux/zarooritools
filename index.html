@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ZarooriTools - Free Online Tools</title>
+
+<meta name="description" content="Free online calculators including age, percentage and gold value calculators.">
 
 <style>
 * {
@@ -13,7 +16,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f5f7fb;
+    background: #f4f7fb;
     color: #222;
 }
 
@@ -21,7 +24,7 @@ header {
     background: #1769aa;
     color: white;
     text-align: center;
-    padding: 30px 15px;
+    padding: 32px 15px;
 }
 
 header h1 {
@@ -31,19 +34,18 @@ header h1 {
 
 header p {
     margin: 10px 0 0;
-    font-size: 16px;
 }
 
 .container {
-    max-width: 900px;
-    margin: 25px auto;
-    padding: 15px;
+    max-width: 850px;
+    margin: auto;
+    padding: 20px 15px;
 }
 
 .tool {
     background: white;
-    padding: 22px;
     margin-bottom: 20px;
+    padding: 22px;
     border-radius: 12px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.08);
 }
@@ -55,7 +57,7 @@ header p {
 input {
     width: 100%;
     padding: 12px;
-    margin: 8px 0;
+    margin: 7px 0;
     border: 1px solid #ccc;
     border-radius: 7px;
     font-size: 16px;
@@ -70,16 +72,15 @@ button {
     border: none;
     border-radius: 7px;
     font-size: 16px;
-    cursor: pointer;
 }
 
-button:hover {
-    background: #0d4f82;
+button:active {
+    transform: scale(0.99);
 }
 
 .result {
     margin-top: 15px;
-    padding: 12px;
+    padding: 13px;
     background: #eef6ff;
     border-radius: 7px;
     font-weight: bold;
@@ -102,52 +103,100 @@ footer {
 
 <div class="container">
 
-    <div class="tool">
-        <h2>🎂 Age Calculator</h2>
+<!-- AGE CALCULATOR -->
 
-        <label>Enter your date of birth:</label>
+<div class="tool">
 
-        <input type="date" id="dob">
+<h2>🎂 Age Calculator</h2>
 
-        <button onclick="calculateAge()">Calculate Age</button>
+<p>Enter your date of birth:</p>
 
-        <div class="result" id="ageResult">
-            Your age will appear here.
-        </div>
-    </div>
+<input type="date" id="dob">
 
-    <div class="tool">
-        <h2>📊 Percentage Calculator</h2>
+<button onclick="calculateAge()">Calculate Age</button>
 
-        <input type="number" id="obtained" placeholder="Obtained marks">
-
-        <input type="number" id="total" placeholder="Total marks">
-
-        <button onclick="calculatePercentage()">Calculate Percentage</button>
-
-        <div class="result" id="percentageResult">
-            Your percentage will appear here.
-        </div>
-    </div>
+<div class="result" id="ageResult">
+Your age will appear here.
+</div>
 
 </div>
 
+
+<!-- PERCENTAGE CALCULATOR -->
+
+<div class="tool">
+
+<h2>📊 Percentage Calculator</h2>
+
+<input type="number" id="obtained" placeholder="Obtained marks">
+
+<input type="number" id="total" placeholder="Total marks">
+
+<button onclick="calculatePercentage()">
+Calculate Percentage
+</button>
+
+<div class="result" id="percentageResult">
+Your percentage will appear here.
+</div>
+
+</div>
+
+
+<!-- GOLD CALCULATOR -->
+
+<div class="tool">
+
+<h2>🪙 Gold Value Calculator</h2>
+
+<p>Enter the current gold rate per tola:</p>
+
+<input
+type="number"
+id="goldRate"
+placeholder="Gold rate per tola">
+
+<p>Enter gold weight in tola:</p>
+
+<input
+type="number"
+id="goldWeight"
+placeholder="Weight in tola"
+step="0.001">
+
+<button onclick="calculateGold()">
+Calculate Gold Value
+</button>
+
+<div class="result" id="goldResult">
+Estimated gold value will appear here.
+</div>
+
+</div>
+
+</div>
+
+
 <footer>
-    © 2026 ZarooriTools — Free Online Tools
+© 2026 ZarooriTools — Free Online Tools
 </footer>
+
 
 <script>
 
+/* AGE CALCULATOR */
+
 function calculateAge() {
 
-    const dob = new Date(document.getElementById("dob").value);
+    const dobInput = document.getElementById("dob").value;
 
-    if (!document.getElementById("dob").value) {
+    if (!dobInput) {
         document.getElementById("ageResult").innerHTML =
-            "Please select your date of birth.";
+        "Please select your date of birth.";
         return;
     }
 
+    const dob = new Date(dobInput);
     const today = new Date();
 
     let years = today.getFullYear() - dob.getFullYear();
@@ -156,6 +205,7 @@ function calculateAge() {
 
     if (days < 0) {
         months--;
+
         days += new Date(
             today.getFullYear(),
             today.getMonth(),
@@ -169,31 +219,72 @@ function calculateAge() {
     }
 
     document.getElementById("ageResult").innerHTML =
-        "Your age is " + years + " years, " +
-        months + " months and " +
-        days + " days.";
+    "Your age is " +
+    years + " years, " +
+    months + " months and " +
+    days + " days.";
 }
+
+
+/* PERCENTAGE CALCULATOR */
 
 function calculatePercentage() {
 
-    const obtained = parseFloat(
-        document.getElementById("obtained").value
-    );
+    const obtained =
+    parseFloat(document.getElementById("obtained").value);
 
-    const total = parseFloat(
-        document.getElementById("total").value
-    );
+    const total =
+    parseFloat(document.getElementById("total").value);
 
-    if (!obtained || !total || total <= 0) {
+    if (
+        isNaN(obtained) ||
+        isNaN(total) ||
+        total <= 0 ||
+        obtained < 0
+    ) {
         document.getElementById("percentageResult").innerHTML =
-            "Please enter valid marks.";
+        "Please enter valid marks.";
         return;
     }
 
-    const percentage = (obtained / total) * 100;
+    const percentage =
+    (obtained / total) * 100;
 
     document.getElementById("percentageResult").innerHTML =
-        "Percentage: " + percentage.toFixed(2) + "%";
+    "Percentage: " +
+    percentage.toFixed(2) +
+    "%";
+}
+
+
+/* GOLD CALCULATOR */
+
+function calculateGold() {
+
+    const rate =
+    parseFloat(document.getElementById("goldRate").value);
+
+    const weight =
+    parseFloat(document.getElementById("goldWeight").value);
+
+    if (
+        isNaN(rate) ||
+        isNaN(weight) ||
+        rate <= 0 ||
+        weight <= 0
+    ) {
+        document.getElementById("goldResult").innerHTML =
+        "Please enter a valid gold rate and weight.";
+        return;
+    }
+
+    const value = rate * weight;
+
+    document.getElementById("goldResult").innerHTML =
+    "Estimated Gold Value: Rs. " +
+    value.toLocaleString("en-PK", {
+        maximumFractionDigits: 2
+    });
 }
 
 </script>
